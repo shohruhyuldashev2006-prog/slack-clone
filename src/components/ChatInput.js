@@ -1,29 +1,32 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import  { useState } from 'react'
 import { Button } from '@mui/material'
-import { auth, db, firebaseTime } from '../firebase'
+import { auth, db } from '../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import {ChatInputContainer} from './cssStyle'
+import { addDoc, collection, doc, serverTimestamp } from 'firebase/firestore'
 function ChatInput({ channelName, channelId, chatRef }) {
   const [input, setInput] = useState('')
   
 
   const [user] = useAuthState(auth)
 
-  const sendMassage = (e) => {
+  const sendMassage = async (e) => {
     e.preventDefault()
 
     if (!channelId) {
       return false
     }
 
-    db.collection('rooms').doc(channelId).collection('messages').add({
-      message: input,
-      timestamp: firebaseTime,
-      user: 'shox',
-      userImage:user.photoURL
-       
-    })
+   await addDoc(
+    collection(doc(db, 'rooms', channelId), 'messages'),
+    {
+      message:input,
+      timestamp:serverTimestamp(),
+      user:user?.displayName || 'shox',
+      userImage:user?.photoURL || ''
+
+    }
+   )
 
     chatRef.current.scrollIntoView({
       behavior: 'smooth'

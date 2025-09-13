@@ -11,10 +11,10 @@
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "cra-template-redux": "2.0.0",
-    "firebase": "8.6.2",
+    "firebase": "^12.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-firebase-hooks": "2.2.0",
+    "react-firebase-hooks": "^5.1.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^5.3.4",
     "react-scripts": "^5.0.1",
@@ -24,14 +24,13 @@
     "v5": "^0.1.2",
     "web-vitals": "^5.1.0"
   },
- "scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "build:legacy": "npm install --legacy-peer-deps && react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
-},
-
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build:legacy": "npm install --legacy-peer-deps && react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

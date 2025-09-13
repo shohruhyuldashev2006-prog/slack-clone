@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import  { useEffect, useRef } from 'react'
 import {ChatContainer, Header, HeaderLeft, Headerright, ChatMassages, ChatBottom } from './cssStyle'
 import ChatInput from './ChatInput'
 import Message from './Message'
@@ -7,21 +7,19 @@ import { useCollection, useDocument } from 'react-firebase-hooks/firestore'
 import { useSelector } from 'react-redux'
 import { selectRoomId } from '../features/appSlice'
 import { db } from '../firebase'
+import { collection, doc, orderBy } from 'firebase/firestore'
 
 
 function Chat() {
   const chatRef = useRef(null)
   const roomId = useSelector(selectRoomId)
   const [roomDetails] = useDocument(
-    roomId && db.collection('rooms').doc(roomId)
+    roomId && doc(db, 'rooms', roomId)
   )
   const [roomMessages, loading] = useCollection(
     roomId &&
-      db
-        .collection('rooms')
-        .doc(roomId)
-        .collection('messages')
-        .orderBy('timestamp', 'asc')
+      collection(doc(db, 'rooms', roomId), 'messages'),
+      orderBy('timestamp', 'asc')
   )
 
   useEffect(() => {

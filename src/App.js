@@ -4,7 +4,7 @@ import Sidebar from './components/sidebar/Sidebar'
 //import css
 import './App.css'
 //import B.R.D
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 //import S.C
 import Chat from './components/Chat'
 import { useAuthState } from 'react-firebase-hooks/auth'

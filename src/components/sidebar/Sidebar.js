@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import {SidebarContainer, SidebarHeader, SidebarInfo } from '../cssStyle'
 import {
   Add,
@@ -18,16 +17,17 @@ import { useCollection } from 'react-firebase-hooks/firestore'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../firebase'
 import SidebarOptions from './SidebarOption'
+import { collection } from 'firebase/firestore'
 
 function Sidebar() {
-  const [channels] = useCollection(db.collection('rooms'))
+  const [Channels]=useCollection(collection(db, 'rooms'))
   const [user] = useAuthState(auth)
 
   return (
     <SidebarContainer>
       <SidebarHeader>
         <SidebarInfo>
-          <h2>Ofis 106</h2>
+          <h2>c-space</h2>
           <h3>
             <FiberManualRecord />
             {user.displayName}
@@ -49,7 +49,7 @@ function Sidebar() {
       <hr />
       <SidebarOptions Icon={Add} addChannelOption title="Add Channel" />
 
-      {channels?.docs.map((doc) => (
+      {Channels?.docs.map((doc) => (
         <SidebarOptions key={doc.id} id={doc.id} title={doc.data().name} />
       ))}
     </SidebarContainer>

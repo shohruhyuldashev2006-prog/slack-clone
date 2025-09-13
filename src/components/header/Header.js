@@ -12,7 +12,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../firebase'
 
-function Header({switchTheme}) {
+function Header() {
   const [user]= useAuthState(auth)
   console.log('user is', user);
   

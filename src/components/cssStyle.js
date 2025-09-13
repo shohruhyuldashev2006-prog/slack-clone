@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Avatar } from '@mui/material'
 
-{/* App.js */ }
+/* App.js */ 
 
 
 export const AppBody = styled.div`
@@ -28,8 +28,7 @@ align-items:center;
   margin-bottom:40px;
 }
 `
-
-{/* header.js */ }
+/* header.js */ 
 
 
 export const HeaderSearch = styled.div`
@@ -97,7 +96,7 @@ export const HeaderAvatar = styled(Avatar)`
   }
 `
 
-/*{ sideBar style }*/
+/* sideBar style */
 
 export const SidebarContainer = styled.div`
   color: white;
@@ -148,7 +147,7 @@ export const SidebarInfo = styled.div`
   }
 `
 
-/* {sidebarOption} */
+/* sidebarOption */
 export const SidebarOptionsContainer = styled.div`
   display: flex;
   font-size: 12px;

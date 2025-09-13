@@ -1,16 +1,17 @@
-import  {SidebarOptionsContainer, SidebarOptionChannel } from '../cssStyle'
+import { SidebarOptionsContainer, SidebarOptionChannel } from '../cssStyle'
 import { useDispatch } from 'react-redux'
 import { enterRoom } from '../../features/appSlice'
 import { db } from '../../firebase'
+import { collection, addDoc } from 'firebase/firestore'  // 🔥 qo‘shildi
 
 function SidebarOptions({ Icon, title, addChannelOption, id }) {
   const dispatch = useDispatch()
 
-  const addChannel = () => {
+  const addChannel = async () => {
     const channelName = prompt('Please enter the channel name')
 
     if (channelName) {
-      db.collection('rooms').add({
+      await addDoc(collection(db, 'rooms'), {
         name: channelName
       })
     }
@@ -43,5 +44,3 @@ function SidebarOptions({ Icon, title, addChannelOption, id }) {
 }
 
 export default SidebarOptions
-
-
